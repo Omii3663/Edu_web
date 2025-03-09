@@ -1,0 +1,609 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.nav1{
+    display: flex;
+    justify-content: space-around ;
+    background-color: black;
+    padding: 5px 10px;
+    position: sticky;
+}
+.nav2{
+    display: flex;
+    justify-content: space-around ;
+    background-color: grey;
+    padding: 20px 15px;
+    position: sticky;
+}
+.hero{
+    height: 90vh;
+    background-image: linear-gradient(rgba(111, 112, 118, 0.8), #090909), url(../Image/illustration/banner-bg.jpg);
+    background-position: end;
+    background-size: cover;
+    position: relative;
+    
+}
+.bg-black, a{
+color: black;
+font-size: 20px;
+}
+.hero-hed{
+    text-transform: uppercase;
+    font-size: 40px;
+    line-height: 40px;
+    font-weight: 800;
+    /* width: 90%; */
+    color: whitesmoke;
+}
+.hed2{
+    font-size: 40px;
+    font-family:"Poppins", sans-serif;
+    font-weight: 600;
+    line-height: 1em;
+}
+.hero_div{
+    height: 70vh;
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    
+}
+.hero-box{
+    width: 70%;
+    display: flex;
+    justify-content: center;
+    
+}
+.para{
+    width: 90%;
+    display: flex;
+    justify-content: end;
+    justify-items: end;
+    padding-bottom: 5px;
+    color: whitesmoke;
+}
+
+.parent {
+    width: 100vw;
+    height: 500px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content:space-around;
+    gap: 10px; /* Added gap to ensure space between child elements */
+}
+.child {
+    width: 300px;
+    height: 350px;
+    border: 2px solid black;
+    display: flex;
+    flex-direction: column; /* Adjusted for better content arrangement */
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 10px; /* Added gap to space out text elements */
+}
+.button1{
+    background-color: rgb(243, 131, 51);
+    width:  150px;
+    height: 45px;
+    color: white;
+    font-family:Arial, Helvetica, sans-serif;
+    cursor: pointer;
+}
+.right{
+    display: flex;
+    color: white;
+    gap: 30px;
+    padding: 10px;
+
+}
+.left{
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    
+}
+a{
+text-decoration: none;
+color: white;
+}
+a:hover{
+color: orangered;
+}
+.tel{
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+.list{
+    display: flex;
+    list-style: none;
+    gap: 30px;
+
+
+}
+.Courses{
+    width: 300px;
+    height: 40px;
+  
+    display: flex;
+    justify-content:space-evenly;
+    justify-content:center;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 10px;
+    padding: 5px;
+
+}
+.child1{
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    justify-content: space-evenly;
+    align-items: center;
+    text-align: center;
+    
+}
+.parent1{
+    display: flex;
+    justify-content: space-evenly;
+    /* flex-wrap: wrap; */
+    
+
+}
+.child2{
+   margin: 15px;
+   padding: 10px;
+
+}
+.discount-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: url('../Image/background/s-bg.jpg') no-repeat center center/cover;
+    height: 500px;
+    color: white;
+    padding: 50px;
+    position: relative;
+}
+
+.discount-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.content {
+    max-width: 50%;
+    position: relative;
+    z-index: 1;
+}
+
+h2 {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+p {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.features {
+    display: flex;
+    gap: 30px;
+}
+
+.feature {
+    text-align: left;
+    max-width: 45%;
+}
+
+.icon {
+    font-size: 24px;
+    display: block;
+    margin-bottom: 10px;
+    color: orange;
+}
+
+h3 {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.form-container {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 30px;
+    border-radius: 8px;
+    width: 350px;
+    position: relative;
+    z-index: 1;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+input, select {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.button3{
+    background-color: orange;
+    color: white;
+    padding: 12px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: darkorange;
+}
+.search{
+    text-transform: uppercase;
+    font-size: 30px;
+    font-family: "Poppins", sans-serif;
+   color: white;
+   padding: 20px;
+   text-align: center;
+   
+    
+}
+.flex{
+    display: flex;
+
+}
+.instructor-section {
+    background: url('../Image/background/cta-bg.jpg') no-repeat center center/cover;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.overlay {
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    text-align: center;
+    padding: 50px;
+    width: 100%;
+    height:80%;
+    border-radius: 8px;
+}
+
+h3{
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    padding: 20px 0 0 0;
+}
+
+.para-size{
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.button2{
+    width: 250px;
+    height: 80px;
+    background-color: white;
+    color: black;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+}
+.hed-size{
+    font-family: Arial, sans-serif;
+    font-size: 50px;
+}
+
+
+.cta-section {
+    background-color: #f26522;
+    color: white;
+    text-align: center;
+    padding: 40px 0;
+   
+}
+
+.cta-section h2 {
+    font-size: 28px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.cta-section button {
+    background-color: white;
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    font-size: 14px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+.cta-section button:hover {
+    background-color: #ddd;
+}
+footer {
+    background-color: #111;
+    padding: 50px;
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background-color: #0c0c0c;
+        color: white;
+
+}
+
+.container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 200px;
+    margin: 10px;
+}
+
+.footer-section h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 8px;
+    color: #bbb;
+}
+
+.newsletter input {
+    width: 80%;
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+}
+
+.newsletter button {
+    background-color: orange;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #444;
+}
+
+.highlight {
+    color: orange;
+}
+
+.social-icons {
+    margin-top: 10px;
+}
+
+.social-icons span {
+    margin: 0 5px;
+    cursor: pointer;
+}
+@media(max-width: 1024px) {
+    .right{
+        display: none;
+    }
+    .list {
+        display: none;
+        flex-wrap: wrap;
+        justify-content: center;
+        text-align: center;
+        padding: 10px 0;
+    }
+
+    .hero-box {
+        width: 90%;
+    }
+
+    .hero-hed {
+        font-size: 30px;
+        line-height: 35px;
+    }
+
+    .parent {
+        flex-direction: column;
+        align-items: center;
+        height: auto;
+    }
+
+    .child {
+        width: 80%;
+        height: auto;
+        padding: 20px;
+    }
+
+    .parent1 {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .child2 {
+        width: 80%;
+        text-align: center;
+    }
+
+    .discount-section {
+        flex-direction: column;
+        text-align: center;
+        height: auto;
+    }
+
+    .features {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .feature {
+        max-width: 80%;
+    }
+
+    .form-container {
+        width: 90%;
+    }
+
+    .instructor-section {
+        height: auto;
+    }
+
+    .overlay {
+        padding: 30px;
+    }
+}
+@media(max-width: 767px) {
+    .list {
+        display: none;
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+
+    .hero {
+        height: auto;
+        padding: 40px 0;
+    }
+
+    .hero-box {
+        width: 100%;
+        text-align: center;
+    }
+
+    .hero_div {
+        width: 90%;
+        align-items: center;
+    }
+
+    .hero-hed {
+        font-size: 24px;
+        line-height: 30px;
+    }
+
+    .para {
+        width: 100%;
+        text-align: center;
+    }
+
+    .button1 {
+        width: 80%;
+    }
+
+    .parent {
+        flex-direction: column;
+        height: auto;
+        align-items: center;
+    }
+
+    .child {
+        width: 90%;
+        padding: 20px;
+    }
+
+    .parent1 {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .child2 {
+        width: 90%;
+        text-align: center;
+    }
+
+    .discount-section {
+        flex-direction: column;
+        text-align: center;
+        padding: 30px;
+    }
+
+    .content {
+        max-width: 100%;
+    }
+
+    .features {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .feature {
+        max-width: 100%;
+    }
+
+    .form-container {
+        width: 100%;
+    }
+
+    .instructor-section {
+        height: auto;
+    }
+
+    .overlay {
+        padding: 20px;
+    }
+
+    .cta-section h2 {
+        font-size: 24px;
+    }
+
+    .cta-section button {
+        width: 90%;
+    }
+
+    footer .container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-section {
+        width: 100%;
+    }
+}
+
+@media(min-width:1050px){
+    .tel{
+        display: none;
+    }
+    .right{
+        justify-content: end;
+    }
+    .menu{
+        display: none;
+    }
+    
+    
+}
+
