@@ -1,0 +1,102 @@
+
+
+ass 3
+
+
+UDP Client
+
+import socket
+
+SERVER_IP = '16.171.175.230'
+PORT = 5001
+
+with socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as s:
+    message = "get_uptime"
+    s.sendto(message.encode(), (SERVER_IP, PORT))
+    data, _ = s.recvfrom(1024)
+
+print("Latest Uptime Info:", data.decode())
+
+UDP SErver
+
+
+import socket
+
+def get_latest_uptime():
+    try:
+        with open("uptime_data.tsv", "r") as file:
+            lines = file.readlines()[1:]  # Skip header
+            return lines[-1].strip() if lines else "No data"
+    except Exception as e:
+        return f"Error: {e}"
+
+HOST = '0.0.0.0'  
+PORT = 5001       
+
+with socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as s:
+    s.bind((HOST, PORT))
+    print(f"UDP Server listening on {HOST}:{PORT}")
+    
+    while True:
+        data, addr = s.recvfrom(1024)
+        print(f"Received request from {addr}")
+        uptime_info = get_latest_uptime()
+        s.sendto(uptime_info.encode(), addr)
+
+
+
+
+Tcp Clent
+
+import socket
+
+# Replace 
+HOST = '16.171.175.230'
+PORT = 12345
+
+def main():
+    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as client_socket:
+        client_socket.connect((HOST, PORT))
+        data = client_socket.recv(1024)
+        print("Latest Uptime Info from Server:\n")
+        print(data.decode('utf-8'))
+
+if __name__ == "__main__":
+    main()
+
+
+
+Tcp Server
+
+import socket
+
+HOST = '0.0.0.0'  # Accept connections on all network interfaces
+PORT = 12345      # Any open port
+
+def get_latest_uptime():
+    try:
+        with open("uptime_data.tsv", "r") as f:
+            lines = f.readlines()
+            if len(lines) > 1:
+                return lines[1].strip()  # Latest entry (since it's sorted descending)
+            else:
+                return "No uptime data available."
+    except Exception as e:
+        return f"Error reading uptime_data.tsv: {e}"
+
+def main():
+    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as server_socket:
+        server_socket.bind((HOST, PORT))
+        server_socket.listen()
+        print(f"[+] Server listening on port {PORT}...")
+
+        while True:
+            conn, addr = server_socket.accept()
+            with conn:
+                print(f"[+] Connected by {addr}")
+                latest_uptime = get_latest_uptime()
+                conn.sendall(latest_uptime.encode('utf-8'))
+                print("[+] Sent latest uptime data")
+
+if __name__ == "__main__":
+    main()

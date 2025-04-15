@@ -1,0 +1,153 @@
+1) Perform the following tasks using Docker state commands:
+A. Pull the Ubuntu image tagged as 20.04 from Docker Hub.
+-->>
+docker pull ubuntu:20.04
+
+B. List all available images.
+->>
+docker images
+
+
+C. Pull the Ubuntu image tagged as latest from Docker Hub.
+->>
+docker pull ubuntu:latest
+
+D. Remove the Ubuntu image tagged as 20.04.
+->>
+docker rmi ubuntu:20.04
+
+E. Run a container named ubuntu-os interactively with detached mode, using the
+Ubuntu image tagged as latest.
+->>
+docker run -dit --name ubuntu-os ubuntu:latest
+
+F. Stop the running container ubuntu-os.
+->>
+docker stop ubuntu-os
+
+G. Restart the container ubuntu-os.
+->>
+docker restart ubuntu-os
+
+H. List all containers.
+->>
+docker ps -a
+
+I. Create a directory within the running container ubuntu-os in detached mode.
+->>
+docker exec -d ubuntu-os mkdir -p /mydir
+
+
+J. Check whether the folder is created within the container or not.
+->>
+docker exec ubuntu-os ls /mydir
+
+
+K. Stop the container ubuntu-os.
+->>
+docker stop ubuntu-os
+
+L. Prune all containers.
+->>
+docker container prune -f
+
+2) Perform the following tasks using Docker commands to manage a PostgreSQL instance:
+A. Pull the latest version of the PostgreSQL image from Docker Hub.
+->>
+docker pull postgres:latest
+
+B. Set up a container named postres-user1 with appropriate environment variables
+and ensure it's in detached mode.
+->>
+docker run -d --name postres-user1 -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=admin123 postgres:latest
+
+
+C. Connect to the PostgreSQL instance within the container postres-user1 using the
+command psql -U postgres.
+->>
+docker exec -it postres-user1 psql -U postgres
+
+D. Create a new database within the PostgreSQL instance.
+->>
+CREATE DATABASE mydb;
+
+
+E. Stop the container named postres-user1.
+->>
+docker stop postres-user1
+
+
+F. Delete the container named postres-user1.
+->>
+docker rm postres-user1
+
+
+
+
+
+Q 3
+
+Server.js
+
+// server.js
+const http = require('http');
+
+const hostname = '0.0.0.0'; // Use 0.0.0.0 to allow access from outside the container
+const port = 3000;
+
+const server = http.createServer((req, res) => {
+  res.statusCode = 200;
+  res.setHeader('Content-Type', 'text/plain');
+  res.end('Hello from Node.js Docker container!\n');
+});
+
+server.listen(port, hostname, () => {
+  console.log(`Server running at http://${hostname}:${port}/`);
+});
+
+
+
+package.json
+
+// package.json
+{
+  "name": "node-docker-server",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  }
+}
+
+
+
+DockerFile
+
+# Use an official Node.js runtime as a base image
+FROM node:18
+
+# Set the working directory
+WORKDIR /usr/src/app
+
+# Copy package.json and install dependencies
+COPY package.json ./
+RUN npm install
+
+# Copy source code
+COPY . .
+
+# Expose the port the app runs on
+EXPOSE 3000
+
+# Start the Node.js app
+CMD ["npm", "start"]
+
+
+docker build -t node-http-server .
+
+
+
+
+
+
+

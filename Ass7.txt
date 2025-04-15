@@ -1,0 +1,85 @@
+
+
+---
+
+## **1) Mongo-Express Application (Manual using Docker commands)**
+
+### **A. Run Mongo container with custom network**
+
+```bash
+# Create a custom network
+docker network create mongo-network
+
+# Run MongoDB container
+docker run -d \
+  --name mongo-container \
+  --network mongo-network \
+  -p 27017:27017 \
+  -e MONGO_INITDB_ROOT_USERNAME=admin \
+  -e MONGO_INITDB_ROOT_PASSWORD=adminpass \
+  mongo
+```
+
+---
+
+### **B. Run mongo-express container on the same network**
+
+```bash
+docker run -d \
+  --name mongo-express-container \
+  --network mongo-network \
+  -p 8081:8081 \
+  -e ME_CONFIG_MONGODB_SERVER=mongo-container \
+  -e ME_CONFIG_MONGODB_ADMINUSERNAME=admin \
+  -e ME_CONFIG_MONGODB_ADMINPASSWORD=adminpass \
+  mongo-express
+```
+
+### **Access in browser:**
+Go to [http://localhost:8081](http://localhost:8081) — this opens the **mongo-express UI**, connected to your Mongo container.
+
+---
+
+## **2) Mongo-Express Application (Using `docker-compose.yml`)**
+
+Here’s a working `docker-compose.yml` that does everything, using the **default network** Docker Compose creates.
+
+```yaml
+version: '3.8'
+
+services:
+  mongo:
+    image: mongo
+    container_name: mongo-container
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: adminpass
+
+  mongo-express:
+    image: mongo-express
+    container_name: mongo-express-container
+    ports:
+      - "8081:8081"
+    environment:
+      ME_CONFIG_MONGODB_SERVER: mongo
+      ME_CONFIG_MONGODB_ADMINUSERNAME: admin
+      ME_CONFIG_MONGODB_ADMINPASSWORD: adminpass
+    depends_on:
+      - mongo
+```
+
+### **Run the application:**
+
+```bash
+docker-compose up -d
+```
+
+### **Access in browser:**
+
+Go to [http://localhost:8081](http://localhost:8081) to view the mongo-express UI.
+
+---
+
+Let me know if you want to add volume persistence, Docker secrets, or a production setup.

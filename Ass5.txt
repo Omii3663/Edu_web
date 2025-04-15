@@ -1,0 +1,162 @@
+Here's a comprehensive walkthrough of the **Git and GitHub Basics Workflow** and the **Branching, Merging, and Diffs Workflow** as outlined:
+
+---
+
+## ✅ **1) Git and GitHub Basics Workflow**
+
+### **A. Clone any public repository**
+
+```bash
+git clone https://github.com/<username>/<repository>.git
+```
+_Example:_
+```bash
+git clone https://github.com/octocat/Hello-World.git
+```
+
+---
+
+### **B. Create a public repository and modify README.md**
+
+1. On GitHub: Create a new **public repository** with a README.md file.
+2. Clone it:
+```bash
+git clone https://github.com/your-username/your-repo.git
+cd your-repo
+```
+3. Modify `README.md`:
+```bash
+echo "## Purpose: This repository is created for demonstrating basic Git and GitHub workflows." >> README.md
+```
+4. Stage and commit:
+```bash
+git add README.md
+git commit -m "Updated README.md to describe the purpose of the repo"
+```
+
+---
+
+### **C. Globally configure Git username and email**
+
+```bash
+git config --global user.name "Your Name"
+git config --global user.email "you@example.com"
+```
+
+---
+
+### **D. Pull the latest `README.md` file from remote**
+
+```bash
+git pull origin main
+```
+
+---
+
+### **E. Edit README.md and create index.html, add to staging**
+
+```bash
+echo "## New Section" >> README.md
+echo "<!DOCTYPE html><html><head><title>Index</title></head><body>Hello</body></html>" > index.html
+
+git add README.md index.html
+```
+
+---
+
+### **F. Push changes using upstream**
+
+```bash
+git commit -m "Added index.html and updated README.md"
+git push --set-upstream origin main
+```
+
+---
+
+## ✅ **2) Branching, Merging, and Diffs Workflow**
+
+### **a) Based on Figure 0.1 (C0, C1, C2)**
+
+```bash
+# C0: h1 in README.md
+echo "# My Project" > README.md
+git add README.md
+git commit -m "C0: Added h1 tag to README.md"
+
+# C1: Create new txt file
+echo "Initial content" > file.txt
+git add file.txt
+git commit -m "C1: Created new text file"
+
+# C2: Modify txt file
+echo "Added more content" >> file.txt
+git add file.txt
+git commit -m "C2: Modified the text file"
+
+# Push to origin main
+git push origin main
+```
+
+---
+
+### **b) Based on Figure 0.2 (iss53 and C3)**
+
+```bash
+# Create new branch
+git checkout -b iss53
+
+# C3: Create index.html and update readme
+echo "<html><body>ISS53 Branch</body></html>" > index.html
+echo "### Update from iss53" >> README.md
+
+git add index.html README.md
+git commit -m "C3: Added index.html and updated README in iss53 branch"
+
+# Diff between commits C1 and C2
+git diff <C1-commit-hash> <C2-commit-hash>
+
+# Diff between main and iss53 branches
+git diff main..iss53
+
+# Push iss53 branch
+git push --set-upstream origin iss53
+```
+
+---
+
+### **c) Based on Figure 0.3 (hotfix and C4)**
+
+```bash
+# Create hotfix branch
+git checkout -b hotfix
+
+# C4: Update new text file
+echo "Critical update in hotfix" >> file.txt
+git add file.txt
+git commit -m "C4: Updated txt file in hotfix branch"
+
+# Push hotfix branch
+git push --set-upstream origin hotfix
+```
+
+---
+
+### **d) Merge hotfix into main and delete hotfix**
+
+```bash
+# Switch to main
+git checkout main
+
+# Merge hotfix
+git merge hotfix
+
+# Delete hotfix branch locally
+git branch -d hotfix
+
+# Delete hotfix branch remotely
+git push origin --delete hotfix
+```
+
+---
+
+Let me know if you'd like me to visualize the commit history with `git log --graph` or simulate this in a GitHub repo example!

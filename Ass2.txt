@@ -1,0 +1,86 @@
+#!/bin/bash
+
+SOURCE="/home/ajay/Desktop/shell code/sourc"
+DESTINATION="/home/ajay/Desktop/shell code/dest"
+
+
+mkdir -p "$DESTINATION/$(date)"
+cp -r "$SOURCE" "$DESTINATION/$(date)" && echo "Backup completed on $(date)" || echo "Backup failed on $(date)"
+
+
+
+
+
+
+
+
+
+
+
+#!/bin/bash
+
+echo "$(ps aux --sort=-%mem | head -n 11)" >> "memory_usage.log"
+
+
+
+
+
+
+
+#!/bin/bash
+
+netstat -tuln | grep LISTEN
+
+
+
+
+
+
+
+#!/bin/bash
+
+SERVICE="sysstat.service"
+
+if systemctl is-active --quiet "$SERVICE"; then
+    echo "running"
+else
+    echo "not running"
+    
+fi
+
+
+
+
+
+
+
+#!/bin/bash
+
+HOST="fsfsdfdsfsf.com"
+OUTPUT_FILE="ping_results.log"
+
+
+if ping -c 1 "$HOST" &> /dev/null; then
+    echo "$(date): $HOST is reachable" >> "$OUTPUT_FILE"
+else
+    echo "$(date): $HOST is not reachable" >> "$OUTPUT_FILE"
+fi
+
+
+
+
+
+
+#!/bin/bash
+
+OUTPUT_FILE="system_uptime.log"
+
+echo "$(date): $(uptime -p)" >> "$OUTPUT_FILE"
+
+
+
+
+
+
+
+
